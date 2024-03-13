@@ -1,0 +1,98 @@
+<ion-header  mode="ios">
+  <ion-toolbar  class="my-toolbar" >
+    
+    <ion-buttons slot="start" class="ion-padding-start">
+      <img src="../../assets/icon/favicon.png" width="60px" height="30px"  [routerLink]="['/about']"/>
+   </ion-buttons>
+
+    <ion-title>  Device </ion-title>
+   
+      <ion-buttons slot="end"> 
+  
+      <ion-button class="filter" (click)="onLogout()" > <ion-icon slot="icon-only"  color="danger" name="power" ></ion-icon></ion-button>
+      <ion-menu-button class="filter" >
+        <img src="../../assets/menu_bar.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar  >
+
+    <ion-segment (ionChange)="changeSegment($event)" value="1" color="danger">
+    <ion-segment-button value="1" checked layout="icon-start"  >
+      <ion-icon name="sync"></ion-icon>
+      <ion-label>Sync</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2" layout="icon-start" >
+      <ion-icon name="archive-outline"></ion-icon>
+      <ion-label>Backup</ion-label>
+    </ion-segment-button>
+
+</ion-segment>
+
+</ion-toolbar>
+
+</ion-header>
+
+
+<ion-content  class="ion-no-padding">
+
+  <ion-grid >
+    <ion-row >
+      <ion-col>
+        <ion-card >
+          <ion-card-header color="medium" >
+            <ion-card-subtitle >
+              Accounts
+            </ion-card-subtitle >
+          
+          </ion-card-header>
+         
+          <ion-card-content class="ion-no-border" >
+      
+            <p ><span > Count </span> <span style="float: right;" class="success-color">{{ accCount }}</span> </p>
+            <p>&nbsp;</p>           
+        
+      </ion-card-content>  
+        </ion-card> 
+      </ion-col>
+      <ion-col>
+        <ion-card  >
+          <ion-card-header color="secondary" >
+            <ion-card-subtitle >
+              Collections
+            </ion-card-subtitle>
+          
+          </ion-card-header>
+          <ion-card-content class="ion-no-border" >
+      
+            <p ><span > Count </span> <span style="float: right;" class="success-color">{{ tranCount}}</span> </p>
+            <p ><span > Total </span> <span style="float: right;" class="success-color"> Rs.&nbsp;{{ total}}</span> </p>
+                    
+          </ion-card-content>  
+        </ion-card> 
+      </ion-col>
+     
+    </ion-row>
+
+    
+  </ion-grid>
+
+ <ion-fab vertical="center" horizontal="center"  translucent="true" slot="fixed" *ngIf="currentSegment==1  && !tranCount && ( isDownload || !accLogExist)">
+    <ion-fab-button color="primary" (click)="!isDownload && downloadAccounts()">    
+      <ion-spinner *ngIf="isDownload"></ion-spinner>
+      <ion-icon name="cloud-download"  *ngIf="!isDownload"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="center" horizontal="center" translucent slot="fixed" *ngIf="currentSegment==1  && !tranCount  && (accLogExist || accCount)  && !isDownload">
+    <ion-fab-button color="danger" (click)="!isClear  && clearAccounts()">    
+      <ion-spinner *ngIf="isClear"></ion-spinner>
+      <ion-icon name="trash"  *ngIf="!isClear"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  
+
+  
+</ion-content>

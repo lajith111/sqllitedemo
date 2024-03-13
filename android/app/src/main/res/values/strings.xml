@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">corepigmy</string>
+    <string name="title_activity_main">corepigmy</string>
+    <string name="package_name">corepigmy.in</string>
+    <string name="custom_url_scheme">corepigmy.in</string>
+</resources>

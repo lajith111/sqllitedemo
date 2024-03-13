@@ -1,0 +1,38 @@
+
+import { LoadingController } from '@ionic/angular';
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class LoaderService {
+    private loading: HTMLIonLoadingElement;
+    private isShowing = false;
+
+    constructor(private loadingController: LoadingController) {}
+
+    public async presentLoader(message: string=''): Promise<void> {
+
+        message='Please wait';
+        if (!this.isShowing) {
+            this.isShowing = true;
+            this.loading = await this.loadingController.create({
+                message: message,
+                mode:'ios',
+                spinner: 'dots',
+                backdropDismiss:false
+                 
+            });
+            return await this.loading.present();
+        } else {
+            // If loader is showing, only change text, won't create a new loader.
+            this.isShowing = true;
+            this.loading.message = message;
+        }
+    }
+
+    public async dismissLoader(): Promise<void> {
+        if (this.loading && this.isShowing) {
+            this.isShowing = false;
+            await this.loading.dismiss();
+        }
+    }
+}

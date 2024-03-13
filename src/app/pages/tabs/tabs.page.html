@@ -1,0 +1,14 @@
+<ion-tabs (ionTabsDidChange)="tabClicked($event)" mode="ios">  
+ 
+ 
+  <ion-tab-bar slot="bottom" class="ion-no-border" >
+
+    <ion-tab-button tab="offline" class="ion-no-border">
+      <ion-icon [name]="selectedTab == 'offline' ? 'phone-portrait':'phone-portrait-outline'"></ion-icon>
+    </ion-tab-button> 
+
+  </ion-tab-bar>
+</ion-tabs>
+
+
+
