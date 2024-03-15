@@ -10,4 +10,4 @@ Hi I Have removed all unnessery things
 5.After dowload You can delete in the Same place
 6 Click to Download button Exception message in web ( console) but records will be saved
 
-I am part time Ionic dev limited knowlege in Javascript tech  d
+I am part time Ionic dev limited knowlege in Javascript tech  dd
